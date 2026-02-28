@@ -4,7 +4,7 @@ using UnityEngine;
 /// Attach to any 2D object with a Collider2D to drag it with the mouse.
 /// </summary>
 [RequireComponent(typeof(Collider2D))]
-public class Dragable : MonoBehaviour
+public class Draggable : MonoBehaviour
 {
     private Camera _cam;
 
