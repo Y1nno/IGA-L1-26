@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 05cd88cdb8c8fa744808a9ee75d291a4, type: 3}
-  m_Name: TooledIngredient
+  m_Name: OrangePlated
   m_EditorClassIdentifier: Assembly-CSharp::IngredientDef
   displayName: 
-  platable: 1
+  platable: 0
+  plated: 1
   ingredientType: 0
-  prefab: {fileID: 8370435314825054014, guid: 2a803fec034b95145942bd9ebe5d0bc5, type: 3}
-  sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  prefab: {fileID: 3944384736346303126, guid: e55b2934607c0a04baecd81e5750b0ce, type: 3}
+  sprite: {fileID: 0}

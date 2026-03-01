@@ -32,8 +32,8 @@ public class ToolStation : Clickable
     private void AddIngredient(Ingredient ingredient, IngredientSpot spot)
     {
         spot.SetIngredient(ingredient);
-        ingredientSpots.Remove(spot);
-        ingredientSpots.Add(spot);
+        //ingredientSpots.Remove(spot);
+        //ingredientSpots.Add(spot);
         ingredient.transform.position = spot.transform.position;
         ingredient.GetComponent<Rigidbody2D>().simulated = false;
         ingredient.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
@@ -43,28 +43,46 @@ public class ToolStation : Clickable
 
     private Ingredient GetIngredientOnClick()
     {
-        Ingredient result = null;
-        foreach (var spot in ingredientSpots)
+        for (int i = 0; i < ingredientSpots.Count; i++)
         {
-            if (spot.ingredient != null)
+            var spot = ingredientSpots[i];
+            if (spot.ingredient == null) continue;
+
+            var result = spot.ingredient;
+            spot.SetIngredient(null);
+
+            var rb = result.GetComponent<Rigidbody2D>();
+            if (rb != null)
             {
-                result = spot.RetrieveIngredient();
-                break;
+                rb.simulated = true;
+                rb.bodyType = RigidbodyType2D.Dynamic;
             }
+
+            return result;
         }
-        result.GetComponent<Rigidbody2D>().simulated = true;
-        result.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-        return result;
+
+        return null;
     }
 
     public void ClearIngredients()
     {
         foreach (var spot in ingredientSpots)
         {
-            if (spot.ingredient != null)
-            {
-                Destroy(spot.RetrieveIngredient().gameObject);
-            }
+            if (spot.ingredient == null) continue;
+
+            var ing = spot.ingredient;
+            spot.SetIngredient(null);
+
+            ing.transform.SetParent(null);
+
+            var rb = ing.GetComponent<Rigidbody2D>();
+            if (rb != null) rb.simulated = false;
+
+            var col = ing.GetComponent<Collider2D>();
+            if (col != null) col.enabled = false;
+
+            ing.gameObject.SetActive(false);
+            Destroy(ing.gameObject);
         }
     }
 
@@ -85,7 +103,7 @@ public class ToolStation : Clickable
     {
         Debug.Log("Trigger entered by: " + other.name);
         //Debug.Log("Is trigger an ingredient: " + (other.GetComponent<Ingredient>() != null));
-        if (other.GetComponent<Ingredient>() != null)
+        if (other.GetComponent<Ingredient>() != null && !other.GetComponent<Ingredient>().definition.plated)
         {
             Ingredient ingredient = other.GetComponent<Ingredient>();
             for (int i = 0; i < ingredientSpots.Count; i++)
@@ -113,14 +131,16 @@ public class ToolStation : Clickable
     }
 }
 
-public struct IngredientSpot
+public class IngredientSpot
 {
     public Transform transform;
     public Ingredient ingredient;
 
     public Ingredient RetrieveIngredient()
     {
-        return ingredient;
+        Ingredient temp = ingredient;
+        ingredient = null;
+        return temp;
     }
 
     public void SetIngredient(Ingredient newIngredient)

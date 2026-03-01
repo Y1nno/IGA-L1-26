@@ -5,6 +5,7 @@ public class IngredientDef : ScriptableObject
 {
     public string displayName;
     public bool platable;
+    public bool plated;
     public IngredientType ingredientType;
     public GameObject prefab;
     public Sprite sprite;

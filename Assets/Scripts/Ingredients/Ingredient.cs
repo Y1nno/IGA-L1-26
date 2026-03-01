@@ -13,11 +13,16 @@ public class Ingredient : Clickable
         {
             spriteRenderer.sprite = def.prefab.GetComponent<SpriteRenderer>().sprite;
         }
-        spriteRenderer.sprite = def.sprite;
     }
 
     public override void OnClick()
     {
+        if (gameObject.GetComponent<Rigidbody2D>() != null)
+        {
+            gameObject.GetComponent<Rigidbody2D>().simulated = true;
+            gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+        }
         Pointer.Instance.PutInHand(gameObject);
+        
     }
 }

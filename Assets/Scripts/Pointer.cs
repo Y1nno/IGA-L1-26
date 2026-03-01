@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class Pointer : MonoBehaviour
 {
@@ -11,6 +11,7 @@ public class Pointer : MonoBehaviour
     public static Pointer Instance => _instance;
     public float throwForce = 0.2f;
     private readonly List<Collider2D> _overlapping = new List<Collider2D>();
+    public Ticket CurrentTicket { get; private set; }
 
     private void Awake()
     {
@@ -56,9 +57,26 @@ public class Pointer : MonoBehaviour
             _holding = false;
             if (transform.childCount > 0)
             {
+                if (transform.GetChild(0).GetComponent<Ingredient>() != null && transform.GetChild(0).GetComponent<Ingredient>().definition.plated)
+                {
+                    if (CurrentTicket != null)
+                    {
+                        Ingredient dish = transform.GetChild(0).GetComponent<Ingredient>();
+                        CurrentTicket.SubmitDish(dish);
+                        Destroy(dish.gameObject);
+                        dish = null;
+                    }
+
+                }
                 DropItem();
             }
         }
+    }
+
+    public Ticket GetCurrentTicket() => CurrentTicket;
+    public void SetCurrentTicket(Ticket ticket)
+    {
+        CurrentTicket = ticket;
     }
 
     public bool IsHolding() => _holding;

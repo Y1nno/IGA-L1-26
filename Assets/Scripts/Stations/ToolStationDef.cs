@@ -11,18 +11,18 @@ public class ToolStationDef : Station
     {
         foreach (var recipe in recipes)
         {
-            Debug.Log("Count: " + recipe.ingredients.Count + ", Ingredients provided: " + ingredients.Count);
+            //Debug.Log("Count: " + recipe.ingredients.Count + ", Ingredients provided: " + ingredients.Count);
             if (recipe.ingredients.Count == ingredients.Count)
             {
-                Debug.Log("Found matching recipe");
+                //Debug.Log("Found matching recipe");
                 if (recipe.ingredients.Count > 1) recipe.ingredients.Sort();
                 bool match = true;
-                Debug.Log("Tool needed: " + recipe.toolNeeded + ", Tool provided: " + tool);
+                //Debug.Log("Tool needed: " + recipe.toolNeeded + ", Tool provided: " + tool);
                 if (recipe.toolNeeded != tool)
                 {
                     return null;
                 }
-                Debug.Log("Checking ingredients...");
+                //Debug.Log("Checking ingredients...");
                 for (int i = 0; i < ingredients.Count; i++)
                 {
                     if (recipe.ingredients[i] != ingredients[i].definition)

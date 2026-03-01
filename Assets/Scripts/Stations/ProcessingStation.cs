@@ -66,6 +66,7 @@ public class ProcessingStation : Clickable
 
     public override void OnClick()
     {
+        Debug.Log("ProcessingStation clicked");
         Interact();
     }
 
@@ -152,7 +153,7 @@ public class ProcessingStation : Clickable
         //Debug.Log("Is trigger an ingredient: " + (other.GetComponent<Ingredient>() != null));
         if (state != ProcessingStationState.Empty && state != ProcessingStationState.Full) {return;}
         if (other.gameObject.transform.parent == Pointer.Instance.transform){return;}
-        if (other.GetComponent<Ingredient>() != null)
+        if (other.GetComponent<Ingredient>() != null && !other.GetComponent<Ingredient>().definition.plated)
         {
             Ingredient ingredient = other.GetComponent<Ingredient>();
             if (ingredient != null)
