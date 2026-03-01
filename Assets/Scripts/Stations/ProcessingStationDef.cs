@@ -7,6 +7,7 @@ public class ProcessingStationDef : Station
     [Header("Processing Settings")]
     public float secondsForCooking;
     public float additionalSecondsForBurning;
+    public bool canBeRuined;
     public ProcessingType processingType;
     public Sprite emptySprite;
     public Sprite fullSprite;
@@ -19,13 +20,14 @@ public class ProcessingStationDef : Station
     {
         foreach (var recipe in recipes)
         {
-            recipe.ingredients.Sort();
+
             if (recipe.ingredients.Count == ingredients.Count)
             {
+                if (recipe.ingredients.Count > 1) recipe.ingredients.Sort();
                 bool match = true;
                 for (int i = 0; i < ingredients.Count; i++)
                 {
-                    if (recipe.ingredients[i] != ingredients[i])
+                    if (recipe.ingredients[i] != ingredients[i].definition)
                     {
                         match = false;
                         break;
@@ -60,5 +62,10 @@ public class ProcessingStationDef : Station
         }
         Debug.LogWarning($"Unhandled Sprite for ProcessingStationState: {state}");
         return null;
+    }
+
+    public override void Interact()
+    {
+        // no implementation needed for ScriptableObject
     }
 }

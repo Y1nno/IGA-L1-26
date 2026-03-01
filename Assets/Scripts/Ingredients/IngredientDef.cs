@@ -17,7 +17,7 @@ public class IngredientDef : ScriptableObject
             obj = Instantiate(prefab);
         }
         obj.GetComponent<Ingredient>().Setup(this);
-        Debug.Log($"Initialized ingredient into GameObject: {obj.name}");
+        //Debug.Log($"Initialized ingredient into GameObject: {obj.name}");
         return obj;
     }
 }

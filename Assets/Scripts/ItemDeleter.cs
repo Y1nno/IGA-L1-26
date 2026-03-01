@@ -6,8 +6,12 @@ public class ItemDeleter : MonoBehaviour
     {
         GameObject item = other.gameObject;
         if (item.GetComponent<Pointer>() != null) {return;}
-        if (item.GetComponent<IngredientBasketStation>() != null) {Destroy(item);}
+        if (item.GetComponent<Ingredient>() != null) {Destroy(item);}
         //TODO: Add more conditions for other item types that should not be destroyed
-        //TODO: Tools
+        if (item.GetComponent<Tool>() != null)
+        {
+            item.GetComponent<Tool>().holder.ResetTool();
+            Destroy(item);
+        }
     }
 }

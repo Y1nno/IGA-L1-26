@@ -11,8 +11,8 @@ public class IngredientBasketStation: Clickable
 
     public override void OnClick()
     {
-        Debug.Log("IngredientBasketStation clicked");
-        Debug.Log($"Definition: {definition}");
+        //Debug.Log("IngredientBasketStation clicked");
+        //Debug.Log($"Definition: {definition}");
         if (definition != null)
         {
             definition.Interact();
@@ -23,8 +23,8 @@ public class IngredientBasketStation: Clickable
     {
         GameObject item = other.gameObject;
         if (item.gameObject.GetComponent<Pointer>() != null) {return;}
-        Debug.Log($"Bool 1: {item.GetComponent<Ingredient>().definition == definition.ingredient}");
-        Debug.Log($"Bool 2: {item.transform.parent != Pointer.Instance.transform}");
+        //Debug.Log($"Bool 1: {item.GetComponent<Ingredient>().definition == definition.ingredient}");
+        //Debug.Log($"Bool 2: {item.transform.parent != Pointer.Instance.transform}");
         if (item.GetComponent<Ingredient>().definition == definition.ingredient && item.transform.parent != Pointer.Instance.transform)
         {
             Destroy(item);

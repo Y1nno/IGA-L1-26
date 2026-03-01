@@ -43,3 +43,9 @@ public enum ProcessingType
     Manual,
     Automatic
 }
+
+public enum ToolHolderState
+{
+    Empty,
+    Occupied
+}

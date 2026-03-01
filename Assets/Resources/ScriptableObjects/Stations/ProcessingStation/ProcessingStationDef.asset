@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67a89a524bafbba42adccbd42e179be4, type: 3}
+  m_Name: ProcessingStationDef
+  m_EditorClassIdentifier: Assembly-CSharp::ProcessingStationDef
+  stationType: 0
+  secondsForCooking: 3
+  additionalSecondsForBurning: 3
+  canBeRuined: 1
+  processingType: 1
+  emptySprite: {fileID: 0}
+  fullSprite: {fileID: 0}
+  readySprite: {fileID: 0}
+  ruinedSprite: {fileID: 0}
+  recipes:
+  - {fileID: 11400000, guid: f5b7e0c2d69026448915813fd6fb4d80, type: 2}
+  ruinedOutput: {fileID: 11400000, guid: 6a19cee48e019dd46b1c31df7654b0df, type: 2}
