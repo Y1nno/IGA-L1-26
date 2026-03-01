@@ -22,3 +22,24 @@ public enum StationType
     Stove,
     Plate
 }
+
+public enum BasketType
+{
+    Unlimited,
+    Limited
+}
+
+public enum ProcessingStationState
+{
+    Empty,
+    Full,
+    Processing,
+    Ready,
+    Ruined
+}
+
+public enum ProcessingType
+{
+    Manual,
+    Automatic
+}
