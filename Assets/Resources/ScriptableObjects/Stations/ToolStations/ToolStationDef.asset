@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ToolStationDef
   stationType: 0
   recipes:
-  - {fileID: 11400000, guid: 5906495e5f8b7ba4aa55dbe084382b7b, type: 2}
+  - {fileID: 11400000, guid: 47dcbc435e4425342bc58e6b73462dd2, type: 2}

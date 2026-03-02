@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlatingStationDef
   stationType: 2
   recipes:
-  - {fileID: 11400000, guid: 0129780357dfb1949b3dbfe0b79f33b5, type: 2}
+  - {fileID: 11400000, guid: 851a3ed09165a6843a9c955d1dda18b8, type: 2}

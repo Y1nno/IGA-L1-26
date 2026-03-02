@@ -4,6 +4,7 @@ using UnityEngine;
 public class ToolDef : ScriptableObject
 {
     public Tool toolPrefab;
+    public float AngleWhenPickedUp = 0f;
 
     public Tool InstantiateTool()
     {

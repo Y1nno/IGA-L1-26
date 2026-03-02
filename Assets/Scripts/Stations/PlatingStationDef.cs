@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.EventSystems;
 
 [CreateAssetMenu(fileName = "PlatingStationDef", menuName = "Scriptable Objects/PlatingStationDef")]
 public class PlatingStationDef : Station
@@ -30,7 +29,7 @@ public class PlatingStationDef : Station
                 }
                 if (match)
                 {
-                    return recipe.GetOutput();
+                    return recipe.GetOutputs()[0];
                 }
             }
         }
@@ -77,7 +76,7 @@ public class PlatingStationDef : Station
             }
             */
 
-            // Now do subset check
+            // subset check
             var recipeCounts = new Dictionary<IngredientDef, int>();
             foreach (var def in recipe.ingredients)
             {

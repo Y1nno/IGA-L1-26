@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class PlatingStation : Clickable
 {
@@ -88,7 +89,7 @@ public class PlatingStation : Clickable
         }
     }
 
-    private List<Ingredient> GetIngredients()
+    public List<Ingredient> GetIngredients()
     {
         List<Ingredient> ingredients = new List<Ingredient>();
         foreach (var spot in ingredientSpots)
@@ -101,26 +102,46 @@ public class PlatingStation : Clickable
         return ingredients;
     }
 
+    public IngredientSpot GetFirstEmptySpot()
+    {
+        foreach (var spot in ingredientSpots)
+        {
+            if (spot.ingredient == null)
+            {
+                return spot;
+            }
+        }
+        return null;
+    }
+
     public void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Trigger entered by: " + other.name);
+        //Debug.Log("Trigger entered by: " + other.name);
         //Debug.Log("Is trigger an ingredient: " + (other.GetComponent<Ingredient>() != null));
         if (other.GetComponent<Ingredient>() != null)
         {
             Ingredient ingredient = other.GetComponent<Ingredient>();
+            if (ingredient.definition.plated)
+            {
+                AddIngredient(ingredient, ingredientSpots[ingredientSpots.Count - 1]);
+            }
             for (int i = 0; i < ingredientSpots.Count; i++)
             {
-                Debug.Log("Checking spot " + i + "Bool: " + (ingredientSpots[i].ingredient == null));
-                Debug.Log("ReadyToServe: " + readyToServe);
-                Debug.Log("Can add ingredient: " + definition.CanAddIngredient(GetIngredients(), ingredient));
+                //Debug.Log("Checking spot " + i + "Bool: " + (ingredientSpots[i].ingredient == null));
+                //Debug.Log("ReadyToServe: " + readyToServe);
+                //Debug.Log("Can add ingredient: " + definition.CanAddIngredient(GetIngredients(), ingredient));
                 if (ingredientSpots[i].ingredient == null && !readyToServe && definition.CanAddIngredient(GetIngredients(), ingredient))
                 {
                     AddIngredient(ingredient, ingredientSpots[i]);
+                    if (GetComponent<TutorialSignaler>())
+                    {
+                        DetermineSignal();
+                    }
                     Ingredient output = definition.GetOutputForIngredients(GetIngredients());
-                    Debug.Log("Output ingredient: " + output);
+                    //Debug.Log("Output ingredient: " + output);
                     if (output != null)
                     {
-                        Debug.Log("Output found: " + output.name);
+                        //Debug.Log("Output found: " + output.name);
                         ClearIngredients();
                         AddIngredient(output, ingredientSpots[i]);
                         readyToServe = true;
@@ -128,6 +149,14 @@ public class PlatingStation : Clickable
                     return;
                 }
             }
+        }
+    }
+
+    public void DetermineSignal()
+    {
+        if (GetIngredients().Count == 2)
+        {
+            GetComponent<TutorialSignaler>().Signal(LevelSignal.AddedBreadToPlate);
         }
     }
 }

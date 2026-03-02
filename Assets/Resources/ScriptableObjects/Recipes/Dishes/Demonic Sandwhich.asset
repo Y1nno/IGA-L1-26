@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8147ab6b71767bc43ae1bef69118c786, type: 3}
+  m_Name: Demonic Sandwhich
+  m_EditorClassIdentifier: Assembly-CSharp::StepsDef
+  ingredients:
+  - {fileID: 11400000, guid: 84fbd917cd344ba47af73476eab5542b, type: 2}
+  - {fileID: 11400000, guid: 84fbd917cd344ba47af73476eab5542b, type: 2}
+  - {fileID: 11400000, guid: a59c688d20577c945b1c72a450589b57, type: 2}
+  outputs:
+  - {fileID: 11400000, guid: 66a271fcbb025a540b624f143c12f9a5, type: 2}

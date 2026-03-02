@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Data;
 
 public class OrderManager : MonoBehaviour
 {
@@ -7,15 +8,26 @@ public class OrderManager : MonoBehaviour
     public static OrderManager Instance => _instance;
     public GameObject orderPrefab;
     public GameObject orderPanel;
+    public GameObject orderContainer;
 
     public float orderApprovalReward = 5.0f;
+    public PlatingStation platingStation;
 
     public List<GameObject> orders = new List<GameObject>();
+    public List<CustomerSO> customers = new List<CustomerSO>();
+    private List<CustomerSO> customersAlreadyOrdered = new List<CustomerSO>();
+    public List<IngredientDef> possibleOrders = new List<IngredientDef>();
+    public int pendingOrders = 10;
+    public float orderSpawnMin = 10.0f;
+    public float orderSpawnMax = 20.0f;
+    public float timeSinceLastOrder = 0.0f;
+    private float timeUntilNextOrder = 0.0f;
 
     private void Awake()
     {
         if (_instance != null && _instance != this)
         {
+            enabled = false;
             Destroy(this.gameObject);
         }
         else
@@ -24,27 +36,94 @@ public class OrderManager : MonoBehaviour
         }
     }
 
+    public void Start()
+    {
+        timeUntilNextOrder = Random.Range(orderSpawnMin, orderSpawnMax);
+    }
+
+    public void Update()
+    {
+
+        timeSinceLastOrder += Time.deltaTime;
+
+        if (pendingOrders > 0 && timeSinceLastOrder >= timeUntilNextOrder)
+        {
+            Debug.Log("Creating new order...");
+            CreateOrder();
+            pendingOrders--;
+            timeSinceLastOrder = 0.0f;
+            timeUntilNextOrder = Random.Range(orderSpawnMin, orderSpawnMax);
+        }
+    }
+
     public void CreateOrder()
     {
+        if (customers.Count == 0)
+        {
+            ResetCustomers();
+        }
         GameObject newOrder = Instantiate(orderPrefab, orderPanel.transform);
+        newOrder.GetComponent<Ticket>().SetOrder(GenerateRandomOrder());
+        newOrder.GetComponent<Ticket>().SetCustomer(GenerateRandomCustomer());
         orders.Add(newOrder);
     }
+
+    public IngredientDef GenerateRandomOrder()
+    {
+        IngredientDef result = possibleOrders[Random.Range(0, possibleOrders.Count)];
+        return result;
+    }
+
+    public CustomerSO GenerateRandomCustomer()
+    {
+        CustomerSO result = customers[Random.Range(0, customers.Count)];
+        customers.Remove(result);
+        customersAlreadyOrdered.Add(result);
+        return result;
+    }
+
+    public void ResetCustomers()
+    {
+        customers.AddRange(customersAlreadyOrdered);
+        customersAlreadyOrdered.Clear();
+    }
+
     public void ResolveOrderAtIndex(int index)
     {
         if (index >= 0 && index < orders.Count)
         {
             GameObject orderToResolve = orders[index];
-            RemoveOrder(orderToResolve);
-            ApprovalMananger.Instance.IncreaseApproval(orderApprovalReward);
+            ResolveOrder(orderToResolve);
         }
     }
 
     public void ResolveOrder(GameObject order)
     {
+        Debug.Log("Resolving order...");
+        Debug.Log("Boolean check 1: " + (order != null));
+        Debug.Log("Boolean check 2: " + orders.Contains(order));
         if (order != null && orders.Contains(order))
         {
+            Debug.Log("Removing order...");
             RemoveOrder(order);
-            ApprovalMananger.Instance.IncreaseApproval(orderApprovalReward);
+            Debug.Log("Grabbing ingredients...");
+            List<Ingredient> platedIngredients = platingStation.GetIngredients();
+            Debug.Log("Clearing plating station...");
+            platingStation.ClearIngredients();
+            Debug.Log("Evaluating order...");
+            EvaluateOrder(order, platedIngredients);
+        }
+    }
+
+    public void EvaluateOrder(GameObject order, List<Ingredient> platedIngredients)
+    {
+        if (GetComponent<TutorialSignaler>())
+        {
+            GetComponent<TutorialSignaler>().Signal(LevelSignal.ResolvedFirstOrder);
+        }
+        if (platedIngredients.Count == 1 && platedIngredients[0].definition == order.GetComponent<Ticket>().order)
+        {
+            PatienceManager.Instance.IncreasePatience(orderApprovalReward);
         }
     }
 
@@ -74,5 +153,16 @@ public class OrderManager : MonoBehaviour
             orders.RemoveAt(0);
             Destroy(firstOrder);
         }
+    }
+
+    public void StartTakingOrders()
+    {
+        if (orderContainer.activeSelf == false)
+        {
+            orderContainer.SetActive(true);
+        }
+        PatienceManager.Instance.ResetPatience();
+        PatienceManager.Instance.StartDecay();
+        PatienceManager.Instance.patienceBar.gameObject.SetActive(true);
     }
 }

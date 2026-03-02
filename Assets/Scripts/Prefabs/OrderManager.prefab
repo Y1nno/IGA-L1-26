@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3919790143784343880
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2642661802348655359}
+  - component: {fileID: 9161004966723937871}
+  m_Layer: 0
+  m_Name: OrderManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2642661802348655359
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3919790143784343880}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 305.29117, y: 190.35718, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9161004966723937871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3919790143784343880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63efd51634c6e5b46952d6cfbd88c63a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  orderPrefab: {fileID: 5149945120263245020, guid: 433b2b6f77f7f3945aaf7438e460a3e0, type: 3}
+  orderPanel: {fileID: 0}
+  orderApprovalReward: 5
+  platingStation: {fileID: 0}
+  orders:
+  - {fileID: 0}
+  customers:
+  - {fileID: 11400000, guid: 43a6aa5aedbc256489c110f914fda138, type: 2}
+  - {fileID: 11400000, guid: baff33867a4b60e4a90cb5c6f58c27bb, type: 2}
+  possibleOrders:
+  - {fileID: 11400000, guid: 66a271fcbb025a540b624f143c12f9a5, type: 2}
+  pendingOrders: 10
+  orderSpawnMin: 3
+  orderSpawnMax: 10
+  timeSinceLastOrder: 0

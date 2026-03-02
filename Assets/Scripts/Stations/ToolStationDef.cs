@@ -7,7 +7,7 @@ public class ToolStationDef : Station
     [Header("ToolStation Settings")]
     public List<ToolStepDef> recipes;
 
-    public Ingredient GetOutputForIngredients(List<Ingredient> ingredients, ToolDef tool)
+    public List<Ingredient> GetOutputForIngredients(List<Ingredient> ingredients, ToolDef tool)
     {
         foreach (var recipe in recipes)
         {
@@ -33,7 +33,7 @@ public class ToolStationDef : Station
                 }
                 if (match)
                 {
-                    return recipe.GetOutput();
+                    return recipe.GetOutputs();
                 }
             }
         }

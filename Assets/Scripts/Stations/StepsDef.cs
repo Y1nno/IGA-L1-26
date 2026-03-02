@@ -5,10 +5,15 @@ using UnityEngine;
 public class StepsDef : ScriptableObject
 {
     public List<IngredientDef> ingredients;
-    public IngredientDef output;
+    public List<IngredientDef> outputs;
 
-    public Ingredient GetOutput()
+    public List<Ingredient> GetOutputs()
     {
-        return output.InitIntoGameObject().GetComponent<Ingredient>();
+        List<Ingredient> outputIngredients = new List<Ingredient>();
+        foreach (var output in outputs)
+        {
+            outputIngredients.Add(output.InitIntoGameObject().GetComponent<Ingredient>());
+        }
+        return outputIngredients;
     }
 }

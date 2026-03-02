@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e9fc2262e35fe24e9c3cac560837599, type: 3}
+  m_Name: New Dialogue SO
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
+  speakers:
+  - {fileID: 11400000, guid: 4c9532e672c77c24ba48a045fc7a1fbf, type: 2}
+  - {fileID: 11400000, guid: b04dfbeeb7773e3439adf857d7940856, type: 2}
+  speakerPlacements:
+  - speaker: {fileID: 11400000, guid: 4c9532e672c77c24ba48a045fc7a1fbf, type: 2}
+    side: 0
+  - speaker: {fileID: 11400000, guid: b04dfbeeb7773e3439adf857d7940856, type: 2}
+    side: 1
+  dialogueLines:
+  - speaker: {fileID: 11400000, guid: 4c9532e672c77c24ba48a045fc7a1fbf, type: 2}
+    line: Boss Says Something
+  - speaker: {fileID: 11400000, guid: b04dfbeeb7773e3439adf857d7940856, type: 2}
+    line: Player Says Something

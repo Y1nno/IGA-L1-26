@@ -16,7 +16,7 @@ public class ProcessingStationDef : Station
     public List<StepsDef> recipes;
     public IngredientDef ruinedOutput;
 
-    public Ingredient GetOutputForIngredients(List<Ingredient> ingredients)
+    public List<Ingredient> GetOutputForIngredients(List<Ingredient> ingredients)
     {
         foreach (var recipe in recipes)
         {
@@ -35,16 +35,16 @@ public class ProcessingStationDef : Station
                 }
                 if (match)
                 {
-                    return recipe.GetOutput();
+                    return recipe.GetOutputs();
                 }
             }
         }
         return GetRuinedOutput();
     }
 
-    public Ingredient GetRuinedOutput()
+    public List<Ingredient> GetRuinedOutput()
     {
-        return ruinedOutput.InitIntoGameObject().GetComponent<Ingredient>();
+        return new List<Ingredient> { ruinedOutput.InitIntoGameObject().GetComponent<Ingredient>() };
     }
 
     public Sprite SetSpriteForState(ProcessingStationState state)

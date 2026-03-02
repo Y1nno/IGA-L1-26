@@ -23,9 +23,12 @@ public class ProcessingStation : Clickable
             {
                 ChangeState(ProcessingStationState.Ready);
                 if (ingredients.Count > 1) ingredients.Sort();
-                Ingredient output = definition.GetOutputForIngredients(ingredients);
+                List<Ingredient> outputs = definition.GetOutputForIngredients(ingredients);
                 ClearIngredients();
-                AddIngredient(output);
+                foreach (var output in outputs)
+                {
+                    AddIngredient(output);
+                }
             }
         }
         if (state == ProcessingStationState.Ready && definition.canBeRuined)
@@ -35,7 +38,11 @@ public class ProcessingStation : Clickable
             {
                 ChangeState(ProcessingStationState.Ruined);
                 ClearIngredients();
-                AddIngredient(definition.GetRuinedOutput());
+                List<Ingredient> ruinedOutputs = definition.GetRuinedOutput();
+                foreach (var ruinedOutput in ruinedOutputs)
+                {
+                    AddIngredient(ruinedOutput);
+                }
             }
         }
         UpdateProgressBar();

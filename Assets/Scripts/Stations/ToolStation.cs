@@ -29,8 +29,12 @@ public class ToolStation : Clickable
     }
 
 
-    private void AddIngredient(Ingredient ingredient, IngredientSpot spot)
+    public void AddIngredient(Ingredient ingredient, IngredientSpot spot = null)
     {
+        if (spot == null)
+        {
+            spot = GetFirstEmptySpot();
+        }
         spot.SetIngredient(ingredient);
         //ingredientSpots.Remove(spot);
         //ingredientSpots.Add(spot);
@@ -99,6 +103,18 @@ public class ToolStation : Clickable
         return ingredients;
     }
 
+    public IngredientSpot GetFirstEmptySpot()
+    {
+        foreach (var spot in ingredientSpots)
+        {
+            if (spot.ingredient == null)
+            {
+                return spot;
+            }
+        }
+        return null;
+    }
+
     public void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Trigger entered by: " + other.name);
@@ -117,15 +133,18 @@ public class ToolStation : Clickable
         }
         else if (other.GetComponent<Pointer>() != null && other.GetComponent<Pointer>().GetComponentInChildren<Tool>() != null)
         {
-            Debug.Log("Tool entered: " + other.name);
+            Debug.Log("Tool entered: " + other.GetComponent<Pointer>().GetComponentInChildren<Tool>().name);
             Tool tool = other.GetComponent<Pointer>().GetComponentInChildren<Tool>();
             Debug.Log("Ingredients: " + GetIngredients());
-            Ingredient output = definition.GetOutputForIngredients(GetIngredients(), tool.definition);
+            List<Ingredient> output = definition.GetOutputForIngredients(GetIngredients(), tool.definition);
             Debug.Log("Output: " + output);
             if (output != null)
             {
                 ClearIngredients();
-                AddIngredient(output, ingredientSpots[0]);
+                foreach (var ing in output)
+                {
+                    AddIngredient(ing, GetFirstEmptySpot());
+                }
             }
         }
     }

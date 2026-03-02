@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StepsDef
   ingredients:
   - {fileID: 11400000, guid: 5929ae60075074841a47a1b5d74e3aa6, type: 2}
-  output: {fileID: 11400000, guid: 4a2da0dc20669974b945b562f9a7cf68, type: 2}
+  outputs:
+  - {fileID: 11400000, guid: 4a2da0dc20669974b945b562f9a7cf68, type: 2}

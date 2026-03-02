@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ToolStepDef
   ingredients:
   - {fileID: 11400000, guid: 280df68cb2c61814fa6f0f61db2846bb, type: 2}
-  output: {fileID: 11400000, guid: 5929ae60075074841a47a1b5d74e3aa6, type: 2}
+  outputs:
+  - {fileID: 11400000, guid: 5929ae60075074841a47a1b5d74e3aa6, type: 2}
   toolNeeded: {fileID: 11400000, guid: b61d409c2cc70b94d97f5dc038301fa8, type: 2}

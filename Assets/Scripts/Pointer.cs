@@ -95,6 +95,10 @@ public class Pointer : MonoBehaviour
         }
         item.transform.SetParent(transform);
         item.transform.localPosition = Vector3.zero;
+        if (item.TryGetComponent<Tool>(out var tool))
+        {
+            tool.SetRotation(tool.definition.AngleWhenPickedUp);
+        }
     }
 
     public void DropItem()

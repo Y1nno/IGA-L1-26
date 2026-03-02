@@ -1,7 +1,8 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Ingredient : Clickable
+public class Ingredient : Clickable, IComparable<Ingredient>
 {
     public IngredientDef definition;
 
@@ -23,6 +24,11 @@ public class Ingredient : Clickable
             gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         }
         Pointer.Instance.PutInHand(gameObject);
-        
+
+    }
+    public int CompareTo(Ingredient other)
+    {
+        if (other == null) return 1;
+        return string.Compare(definition.displayName, other.definition.displayName, StringComparison.Ordinal);
     }
 }

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fef827eea047081478de9ed64adbdd12, type: 3}
+  m_Name: KnifeHolderDef
+  m_EditorClassIdentifier: Assembly-CSharp::ToolHolderDef
+  tool: {fileID: 11400000, guid: ed3c4f1df5241c745a409a1ad9cb8fd8, type: 2}
+  occupiedSprite: {fileID: -2556215195200880849, guid: 343652b73730bdc45bb74f2ccc4c1008, type: 3}
+  emptySprite: {fileID: 0}
