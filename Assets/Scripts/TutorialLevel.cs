@@ -6,9 +6,11 @@ public class TutorialLevel : MonoBehaviour
     public DialogueSO knifeDialogue;
     public DialogueSO breadDialogue;
     public DialogueSO firstOrderResolvedDialogue;
+    public DialogueSO approvalChangeDialogue;
     private bool knifeGrabbed = false;
     private bool breadPlated = false;
     private bool firstOrderResolved = false;
+    private bool approvalChanged = false;
 
     void Start()
     {
@@ -33,6 +35,12 @@ public class TutorialLevel : MonoBehaviour
                 if (firstOrderResolved) { return; }
                 firstOrderResolved = true;
                 DialogueManager.Instance.StartDialogue(firstOrderResolvedDialogue);
+                break;
+            case LevelSignal.ApprovalChange:
+                if (approvalChanged) { return; }
+                approvalChanged = true;
+                AffectionManager.Instance.ApprovalBar.gameObject.SetActive(true);
+                DialogueManager.Instance.StartDialogue(approvalChangeDialogue);
                 break;
         }
     }

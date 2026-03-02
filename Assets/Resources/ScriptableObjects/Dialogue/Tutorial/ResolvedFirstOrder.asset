@@ -28,8 +28,8 @@ MonoBehaviour:
   OnDialogueEnd:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5942090011924617403, guid: 6333375dcfd5d5b458d937bdb5bcf1e9, type: 3}
-        m_TargetAssemblyTypeName: TurnOnOrders, Assembly-CSharp
+      - m_Target: {fileID: -5003344484876087086, guid: bce176a4a2a264d4c9d2218125878c65, type: 3}
+        m_TargetAssemblyTypeName: TurnOnBread, Assembly-CSharp
         m_MethodName: Execute
         m_Mode: 1
         m_Arguments:

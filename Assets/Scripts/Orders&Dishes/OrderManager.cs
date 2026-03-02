@@ -22,6 +22,14 @@ public class OrderManager : MonoBehaviour
     public float orderSpawnMax = 20.0f;
     public float timeSinceLastOrder = 0.0f;
     private float timeUntilNextOrder = 0.0f;
+    [Header("Chef Prompts")]
+    public List<ChefPrompts> RandomChefPrompts;
+    public GameObject chefPromptPanel;
+    public float promptSpawnMin = 10.0f;
+    public float promptSpawnMax = 20.0f;
+    public float timeSinceLastPrompt = 0.0f;
+    private float timeUntilNextPrompt = 0.0f;
+    private List<ChefPrompts> usedChefPrompts = new List<ChefPrompts>();
 
     private void Awake()
     {
@@ -48,7 +56,7 @@ public class OrderManager : MonoBehaviour
 
         if (pendingOrders > 0 && timeSinceLastOrder >= timeUntilNextOrder)
         {
-            Debug.Log("Creating new order...");
+            //Debug.Log("Creating new order...");
             CreateOrder();
             pendingOrders--;
             timeSinceLastOrder = 0.0f;
@@ -66,6 +74,19 @@ public class OrderManager : MonoBehaviour
         newOrder.GetComponent<Ticket>().SetOrder(GenerateRandomOrder());
         newOrder.GetComponent<Ticket>().SetCustomer(GenerateRandomCustomer());
         orders.Add(newOrder);
+    }
+
+    public void AddPrompt()
+    {
+        if (RandomChefPrompts.Count == 0)
+        {
+            return;
+        }
+        ChefPrompts prompt = RandomChefPrompts[Random.Range(0, RandomChefPrompts.Count)];
+        RandomChefPrompts.Remove(prompt);
+        usedChefPrompts.Add(prompt);
+        GameObject newPrompt = Instantiate(chefPromptPanel, orderPanel.transform);
+        newPrompt.GetComponent<ChefPrompt>().SetPrompt(prompt);
     }
 
     public IngredientDef GenerateRandomOrder()

@@ -78,15 +78,16 @@ public class PlatingStation : Clickable
     {
         foreach (var spot in ingredientSpots)
         {
-            Debug.Log("Clearing spot: " + spot.transform.name);
+            //Debug.Log("Clearing spot: " + spot.transform.name);
             if (spot.ingredient != null)
             {
-                Debug.Log("Clearing ingredient: " + spot.ingredient.name);
+                //Debug.Log("Clearing ingredient: " + spot.ingredient.name);
                 var ing = spot.ingredient;
                 spot.SetIngredient(null);
                 Destroy(ing.gameObject);
             }
         }
+        readyToServe = false;
     }
 
     public List<Ingredient> GetIngredients()

@@ -42,6 +42,10 @@ public class PatienceManager : MonoBehaviour
             lastDecayTime = Time.time;
             UpdatePatienceBarColor();
         }
+        if (patienceBar.value <= patienceBar.minValue)
+        {
+            OnZeroPatience();
+        }
     }
 
     public void ToggleDecay()
@@ -76,5 +80,10 @@ public class PatienceManager : MonoBehaviour
     {
         patienceBar.value = patienceBar.maxValue;
         UpdatePatienceBarColor();
+    }
+
+    public void OnZeroPatience()
+    {
+        GlobalGameManager.Instance.LoadLevel("Game Over");
     }
 }

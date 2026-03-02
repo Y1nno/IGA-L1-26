@@ -915,7 +915,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2292423815245037227, guid: 13b44a8675ee84e479f50e02e4c6a797, type: 3}
       propertyPath: patienceDecayAmount
-      value: 0.0005
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 4681838173583582285, guid: 13b44a8675ee84e479f50e02e4c6a797, type: 3}
       propertyPath: m_Name
@@ -1211,6 +1211,7 @@ MonoBehaviour:
   startingDialogue: {fileID: 11400000, guid: d733e6643aafbaf4588bb494bb7efcdb, type: 2}
   knifeDialogue: {fileID: 11400000, guid: 6e998c85de4c8be428398ea92f85667c, type: 2}
   breadDialogue: {fileID: 11400000, guid: 26abbe5e582f0b24eb4c61d5564a95ab, type: 2}
+  firstOrderResolvedDialogue: {fileID: 11400000, guid: e89ef496e9d15d54eaecaf5ca9971bb5, type: 2}
 --- !u!4 &727118991
 Transform:
   m_ObjectHideFlags: 0
@@ -1618,6 +1619,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 132555885051901450, guid: cb3d089aa186e294d8a0d560e61b0ecd, type: 3}
       propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 538380861728991255, guid: cb3d089aa186e294d8a0d560e61b0ecd, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 566836461689173008, guid: cb3d089aa186e294d8a0d560e61b0ecd, type: 3}
