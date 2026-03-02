@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AddRemoveAttraction : MonoBehaviour
+public class TutroialAddAffection : MonoBehaviour
 {
     public void Execute(float amount)
     {
@@ -8,7 +8,7 @@ public class AddRemoveAttraction : MonoBehaviour
         {
             AffectionManager.Instance.IncreaseAffection(amount);
         }
-        else if (amount < 0)
+        else
         {
             AffectionManager.Instance.DecreaseAffection(-amount);
         }

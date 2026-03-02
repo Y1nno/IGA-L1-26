@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Data;
+using Unity.VisualScripting;
 
 public class OrderManager : MonoBehaviour
 {
@@ -47,12 +48,14 @@ public class OrderManager : MonoBehaviour
     public void Start()
     {
         timeUntilNextOrder = Random.Range(orderSpawnMin, orderSpawnMax);
+        timeUntilNextPrompt = Random.Range(promptSpawnMin, promptSpawnMax);
     }
 
     public void Update()
     {
 
         timeSinceLastOrder += Time.deltaTime;
+        timeSinceLastPrompt += Time.deltaTime;
 
         if (pendingOrders > 0 && timeSinceLastOrder >= timeUntilNextOrder)
         {
@@ -61,6 +64,13 @@ public class OrderManager : MonoBehaviour
             pendingOrders--;
             timeSinceLastOrder = 0.0f;
             timeUntilNextOrder = Random.Range(orderSpawnMin, orderSpawnMax);
+        }
+
+        if (timeSinceLastPrompt >= timeUntilNextPrompt)
+        {
+            AddPrompt();
+            timeSinceLastPrompt = 0.0f;
+            timeUntilNextPrompt = Random.Range(promptSpawnMin, promptSpawnMax);
         }
     }
 
@@ -120,20 +130,25 @@ public class OrderManager : MonoBehaviour
 
     public void ResolveOrder(GameObject order)
     {
-        Debug.Log("Resolving order...");
-        Debug.Log("Boolean check 1: " + (order != null));
-        Debug.Log("Boolean check 2: " + orders.Contains(order));
+        //Debug.Log("Resolving order...");
+        //Debug.Log("Boolean check 1: " + (order != null));
+        //Debug.Log("Boolean check 2: " + orders.Contains(order));
         if (order != null && orders.Contains(order))
         {
-            Debug.Log("Removing order...");
+            //Debug.Log("Removing order...");
             RemoveOrder(order);
-            Debug.Log("Grabbing ingredients...");
+            //Debug.Log("Grabbing ingredients...");
             List<Ingredient> platedIngredients = platingStation.GetIngredients();
-            Debug.Log("Clearing plating station...");
+            //Debug.Log("Clearing plating station...");
             platingStation.ClearIngredients();
-            Debug.Log("Evaluating order...");
+            //Debug.Log("Evaluating order...");
             EvaluateOrder(order, platedIngredients);
         }
+    }
+
+    public void ResolvePrompt(GameObject prompt)
+    {
+        Destroy(prompt);
     }
 
     public void EvaluateOrder(GameObject order, List<Ingredient> platedIngredients)

@@ -36,10 +36,10 @@ public class TutorialLevel : MonoBehaviour
                 firstOrderResolved = true;
                 DialogueManager.Instance.StartDialogue(firstOrderResolvedDialogue);
                 break;
-            case LevelSignal.ApprovalChange:
+            case LevelSignal.AffectionChange:
                 if (approvalChanged) { return; }
                 approvalChanged = true;
-                AffectionManager.Instance.ApprovalBar.gameObject.SetActive(true);
+                AffectionManager.Instance.AffectionBar.gameObject.SetActive(true);
                 DialogueManager.Instance.StartDialogue(approvalChangeDialogue);
                 break;
         }

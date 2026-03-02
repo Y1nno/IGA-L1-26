@@ -6,11 +6,11 @@ public class AffectionManager : MonoBehaviour
     private static AffectionManager _instance;
     public static AffectionManager Instance => _instance;
 
-    public Slider ApprovalBar;
-    [Tooltip("Speed at which Approval decays over time in seconds")]
-    public float ApprovalDecaySpeed = 0.05f;
-    [Tooltip("Amount by which Approval decreases each time")]
-    public float ApprovalDecayAmount = .5f;
+    public Slider AffectionBar;
+    [Tooltip("Speed at which Affection decays over time in seconds")]
+    public float AffectionDecaySpeed = 0.05f;
+    [Tooltip("Amount by which Affection decreases each time")]
+    public float AffectionDecayAmount = .5f;
     public float lastDecayTime = 0f;
     public bool isDecaying = false;
 
@@ -33,14 +33,14 @@ public class AffectionManager : MonoBehaviour
 
     public void Update()
     {
-        if (isDecaying && Time.time - lastDecayTime >= ApprovalDecaySpeed)
+        if (isDecaying && Time.time - lastDecayTime >= AffectionDecaySpeed)
         {
-            DecreaseApproval(ApprovalDecayAmount);
+            DecreaseAffection(AffectionDecayAmount);
             lastDecayTime = Time.time;
         }
-        if (ApprovalBar.value <= ApprovalBar.minValue)
+        if (AffectionBar.value <= AffectionBar.minValue)
         {
-            OnZeroApproval();
+            OnZeroAffection();
         }
     }
 
@@ -49,38 +49,38 @@ public class AffectionManager : MonoBehaviour
         isDecaying = !isDecaying;
     }
 
-    public void IncreaseApproval(float amount)
+    public void IncreaseAffection(float amount)
     {
-        ApprovalBar.value += amount;
-        if (ApprovalBar.value > ApprovalBar.maxValue)
+        AffectionBar.value += amount;
+        if (AffectionBar.value > AffectionBar.maxValue)
         {
-            ApprovalBar.value = ApprovalBar.maxValue;
+            AffectionBar.value = AffectionBar.maxValue;
         }
         if (GetComponent<TutorialSignaler>())
         {
-            GetComponent<TutorialSignaler>().Signal(LevelSignal.ApprovalChange);
+            GetComponent<TutorialSignaler>().Signal(LevelSignal.AffectionChange);
         }
     }
 
-    public void DecreaseApproval(float amount)
+    public void DecreaseAffection(float amount)
     {
-        ApprovalBar.value -= amount;
-        if (ApprovalBar.value < ApprovalBar.minValue)
+        AffectionBar.value -= amount;
+        if (AffectionBar.value < AffectionBar.minValue)
         {
-            ApprovalBar.value = ApprovalBar.minValue;
+            AffectionBar.value = AffectionBar.minValue;
         }
         if (GetComponent<TutorialSignaler>())
         {
-            GetComponent<TutorialSignaler>().Signal(LevelSignal.ApprovalChange);
+            GetComponent<TutorialSignaler>().Signal(LevelSignal.AffectionChange);
         }
     }
 
-    public void ResetApproval()
+    public void ResetAffection()
     {
-        ApprovalBar.value = ApprovalBar.maxValue;
+        AffectionBar.value = AffectionBar.maxValue;
     }
 
-    public void OnZeroApproval()
+    public void OnZeroAffection()
     {
         GlobalGameManager.Instance.LoadLevel("Game Over");
     }

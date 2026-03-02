@@ -14,5 +14,5 @@ public enum LevelSignal
     GrabbedKnife,
     AddedBreadToPlate,
     ResolvedFirstOrder,
-    ApprovalChange
+    AffectionChange
 }
