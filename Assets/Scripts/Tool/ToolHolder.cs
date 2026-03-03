@@ -48,7 +48,7 @@ public class ToolHolder: Clickable
             //Debug.Log("Boolean check for tutorial knife");
             //Debug.Log("Current level: " + GlobalGameManager.Instance.currentLevelName);
             //Debug.Log("Tool name: " + def.tool.name);
-            if (GlobalGameManager.Instance.currentLevelName == "Tutorial" && def.tool.name == "KnifeDef")
+            if (GlobalGameManager.Instance.currentLevelName == "Tutorial Level" && def.tool.name == "KnifeDef")
             {
                 GetComponent<TutorialSignaler>().Signal(LevelSignal.GrabbedKnife);
             }

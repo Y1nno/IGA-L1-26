@@ -1,7 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System.Data;
-using Unity.VisualScripting;
 
 public class OrderManager : MonoBehaviour
 {
@@ -33,6 +31,8 @@ public class OrderManager : MonoBehaviour
     public float timeSinceLastPrompt = 0.0f;
     private float timeUntilNextPrompt = 0.0f;
     private List<ChefPrompts> usedChefPrompts = new List<ChefPrompts>();
+
+    
 
     private void Awake()
     {
@@ -212,5 +212,22 @@ public class OrderManager : MonoBehaviour
         PatienceManager.Instance.ResetPatience();
         PatienceManager.Instance.StartDecay();
         PatienceManager.Instance.patienceBar.gameObject.SetActive(true);
+    }
+
+    public void OnFinish()
+    {
+        switch(GlobalGameManager.Instance.currentLevelName)
+        {
+            case "Tutorial Level":
+                DialogueManager.Instance.StartDialogue(DialogueInstances.TutorialFinish);
+                break;
+            case "Level 1":
+                DialogueManager.Instance.StartDialogue(DialogueInstances.Level1Finish);
+                break;
+            // Add more cases as needed for other levels
+            default:
+                // Handle default case
+                break;
+        }
     }
 }

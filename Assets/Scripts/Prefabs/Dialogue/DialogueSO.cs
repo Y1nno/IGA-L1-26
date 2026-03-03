@@ -65,4 +65,4 @@ public class DialogueLine
     }
 }
 
-public enum Speaker { Boss, Player };
+public enum Speaker { Boss, Player, None };

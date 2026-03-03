@@ -766,7 +766,7 @@ Transform:
   m_GameObject: {fileID: 487283056}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.65, y: 1.57, z: -3}
+  m_LocalPosition: {x: -6.24, y: 1.78, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -797,7 +797,7 @@ Transform:
   m_GameObject: {fileID: 522670325}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.42, y: 1.31, z: -2}
+  m_LocalPosition: {x: -5.18, y: 1.64, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1253,7 +1253,7 @@ Transform:
   m_GameObject: {fileID: 728389847}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.86, y: 1.79, z: -3}
+  m_LocalPosition: {x: -4.56, y: 2.12, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1514,7 +1514,7 @@ Transform:
   m_GameObject: {fileID: 834660350}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.38, y: 1.49, z: -2}
+  m_LocalPosition: {x: -3.82, y: 1.85, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2112,7 +2112,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1534600953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2162,7 +2162,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1534600952}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -2404,7 +2404,7 @@ Transform:
   m_GameObject: {fileID: 1649151045}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.51, y: 1.68, z: -4}
+  m_LocalPosition: {x: -3.15, y: 1.83, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2755,6 +2755,14 @@ PrefabInstance:
       propertyPath: platingStation
       value: 
       objectReference: {fileID: 1534600953}
+    - target: {fileID: 9161004966723937871, guid: 4dbd77cc7bbfc9f4c8d55f0a097e147b, type: 3}
+      propertyPath: promptSpawnMax
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 9161004966723937871, guid: 4dbd77cc7bbfc9f4c8d55f0a097e147b, type: 3}
+      propertyPath: promptSpawnMin
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 9161004966723937871, guid: 4dbd77cc7bbfc9f4c8d55f0a097e147b, type: 3}
       propertyPath: chefPromptPanel
       value: 
@@ -3266,7 +3274,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1971343811
 SpriteRenderer:
   serializedVersion: 2
@@ -3527,7 +3535,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 540139102295471641, guid: a95991db4c99fda45896efa04ca803bd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.3251898
+      value: 2.3
       objectReference: {fileID: 0}
     - target: {fileID: 540139102295471641, guid: a95991db4c99fda45896efa04ca803bd, type: 3}
       propertyPath: m_LocalPosition.z

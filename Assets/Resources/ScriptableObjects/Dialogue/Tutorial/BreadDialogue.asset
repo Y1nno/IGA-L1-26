@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
   dialogueLines:
   - speaker: 0
-    line: "No take the human meat assemble everything on a plate. Once assembled,
+    line: "Now take the human meat assemble everything on a plate. Once assembled,
       ring the bell! No time to waste; I have hungry patrons to serve and savor\u2026
       *licks lips*"
     image: {fileID: 1808409080906380215, guid: c58c7139830f4d742aa1680b58fe5cbf, type: 3}
