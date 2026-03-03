@@ -14,7 +14,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
   dialogueLines:
   - speaker: 0
-    line: Tempoary Affection Dialogue
+    line: Continue to please me in such ways, and perhaps you can gain my approval.
+    image: {fileID: 1808409080906380215, guid: c58c7139830f4d742aa1680b58fe5cbf, type: 3}
+    position: {x: -1.95, y: -1.38}
+    scale: {x: 0.4078, y: 0.4078}
+  - speaker: 0
+    line: "Displease me\u2026and you\u2019ll find this job very difficult."
+    image: {fileID: 1808409080906380215, guid: c58c7139830f4d742aa1680b58fe5cbf, type: 3}
+    position: {x: -1.95, y: -1.38}
+    scale: {x: 0.4078, y: 0.4078}
+  - speaker: 0
+    line: "Don\u2019t worry, mon chou, I won\u2019t fire you immediately for a mistake\u2026even
+      though you deserve it."
+    image: {fileID: 1808409080906380215, guid: c58c7139830f4d742aa1680b58fe5cbf, type: 3}
+    position: {x: -1.95, y: -1.38}
+    scale: {x: 0.4078, y: 0.4078}
+  - speaker: 0
+    line: "But the more mistakes you make on an order, the worse the outcome will
+      be for you. Don\u2019t disappoint me."
     image: {fileID: 1808409080906380215, guid: c58c7139830f4d742aa1680b58fe5cbf, type: 3}
     position: {x: -1.95, y: -1.38}
     scale: {x: 0.4078, y: 0.4078}

@@ -40,6 +40,10 @@ public class Pointer : MonoBehaviour
     #region Input System
     public void OnClick(InputAction.CallbackContext context)
     {
+        if (DialogueManager.Instance != null && DialogueManager.Instance.IsDialogueActive)
+        {
+            return;
+        }
         if (context.performed)
         {
             _holding = true;

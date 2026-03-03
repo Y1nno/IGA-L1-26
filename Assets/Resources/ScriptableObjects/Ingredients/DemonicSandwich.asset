@@ -18,3 +18,4 @@ MonoBehaviour:
   ingredientType: 0
   prefab: {fileID: 5817368936971215629, guid: 64d227765d44d9a42ba9904648f9a881, type: 3}
   sprite: {fileID: -7857539635008471752, guid: b309506345e28c84b818a1bd1eb77ca5, type: 3}
+  heldSprite: {fileID: -8699184237038179026, guid: 86df696bb2402e940bfb39497e995aec, type: 3}

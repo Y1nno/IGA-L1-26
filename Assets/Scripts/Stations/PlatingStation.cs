@@ -7,6 +7,7 @@ public class PlatingStation : Clickable
     private List<IngredientSpot> ingredientSpots = new List<IngredientSpot>();
     public PlatingStationDef definition;
     public bool readyToServe = false;
+    public Sprite defaultSprite;
     public void Awake()
     {
         foreach (Transform childTransform in transform)
@@ -18,6 +19,8 @@ public class PlatingStation : Clickable
             };
             ingredientSpots.Add(spot);
         }
+
+        defaultSprite = GetComponent<SpriteRenderer>().sprite;
     }
 
     public override void OnClick()
@@ -27,6 +30,7 @@ public class PlatingStation : Clickable
             var served = ingredientSpots[0].ingredient;
             if (served != null)
             {
+                GetComponent<SpriteRenderer>().sprite = defaultSprite;
                 ingredientSpots[0].SetIngredient(null);
                 served.gameObject.GetComponent<Rigidbody2D>().simulated = true;
                 served.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
@@ -70,6 +74,11 @@ public class PlatingStation : Clickable
         {
             result.gameObject.GetComponent<Rigidbody2D>().simulated = true;
             result.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            if (result.GetComponent<Ingredient>().definition.plated)
+            {
+                Color tempColor = result.GetComponent<SpriteRenderer>().color;
+                result.GetComponent<SpriteRenderer>().color = new Color(tempColor.r, tempColor.g, tempColor.b, 255);
+            }
         }
         return result;
     }
@@ -88,6 +97,7 @@ public class PlatingStation : Clickable
             }
         }
         readyToServe = false;
+        GetComponent<SpriteRenderer>().sprite = defaultSprite;
     }
 
     public List<Ingredient> GetIngredients()
@@ -146,6 +156,13 @@ public class PlatingStation : Clickable
                         ClearIngredients();
                         AddIngredient(output, ingredientSpots[i]);
                         readyToServe = true;
+                        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+                        if (sr != null)
+                        {
+                            Color tempColor = output.GetComponent<SpriteRenderer>().color;
+                            output.GetComponent<SpriteRenderer>().color = new Color(tempColor.r, tempColor.g, tempColor.b, 0);
+                            sr.sprite = output.definition.heldSprite;
+                        }
                     }
                     return;
                 }

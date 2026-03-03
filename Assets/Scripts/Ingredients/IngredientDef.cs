@@ -10,6 +10,7 @@ public class IngredientDef : ScriptableObject, IComparable<IngredientDef>
     public IngredientType ingredientType;
     public GameObject prefab;
     public Sprite sprite;
+    public Sprite heldSprite;
 
     public GameObject InitIntoGameObject()
     {

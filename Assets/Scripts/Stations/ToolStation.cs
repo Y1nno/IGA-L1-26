@@ -117,7 +117,7 @@ public class ToolStation : Clickable
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Trigger entered by: " + other.name);
+        //Debug.Log("Trigger entered by: " + other.name);
         //Debug.Log("Is trigger an ingredient: " + (other.GetComponent<Ingredient>() != null));
         if (other.GetComponent<Ingredient>() != null && !other.GetComponent<Ingredient>().definition.plated)
         {
@@ -133,11 +133,11 @@ public class ToolStation : Clickable
         }
         else if (other.GetComponent<Pointer>() != null && other.GetComponent<Pointer>().GetComponentInChildren<Tool>() != null)
         {
-            Debug.Log("Tool entered: " + other.GetComponent<Pointer>().GetComponentInChildren<Tool>().name);
+            //Debug.Log("Tool entered: " + other.GetComponent<Pointer>().GetComponentInChildren<Tool>().name);
             Tool tool = other.GetComponent<Pointer>().GetComponentInChildren<Tool>();
-            Debug.Log("Ingredients: " + GetIngredients());
+            //Debug.Log("Ingredients: " + GetIngredients());
             List<Ingredient> output = definition.GetOutputForIngredients(GetIngredients(), tool.definition);
-            Debug.Log("Output: " + output);
+            //Debug.Log("Output: " + output);
             if (output != null)
             {
                 ClearIngredients();

@@ -12,6 +12,7 @@ public class OrderManager : MonoBehaviour
     public GameObject orderContainer;
 
     public float orderApprovalReward = 5.0f;
+    public float orderPenalty = 0.05f;
     public PlatingStation platingStation;
 
     public List<GameObject> orders = new List<GameObject>();
@@ -25,6 +26,7 @@ public class OrderManager : MonoBehaviour
     private float timeUntilNextOrder = 0.0f;
     [Header("Chef Prompts")]
     public List<ChefPrompts> RandomChefPrompts;
+    public ChefPrompts servedWrongPrompt;
     public GameObject chefPromptPanel;
     public float promptSpawnMin = 10.0f;
     public float promptSpawnMax = 20.0f;
@@ -93,6 +95,11 @@ public class OrderManager : MonoBehaviour
             return;
         }
         ChefPrompts prompt = RandomChefPrompts[Random.Range(0, RandomChefPrompts.Count)];
+        AddPrompt(prompt);
+    }
+
+    public void AddPrompt(ChefPrompts prompt)
+    {
         RandomChefPrompts.Remove(prompt);
         usedChefPrompts.Add(prompt);
         GameObject newPrompt = Instantiate(chefPromptPanel, orderPanel.transform);
@@ -160,6 +167,11 @@ public class OrderManager : MonoBehaviour
         if (platedIngredients.Count == 1 && platedIngredients[0].definition == order.GetComponent<Ticket>().order)
         {
             PatienceManager.Instance.IncreasePatience(orderApprovalReward);
+        }
+        else
+        {
+            AffectionManager.Instance.DecreaseAffection(orderPenalty);
+            AddPrompt(servedWrongPrompt);
         }
     }
 
