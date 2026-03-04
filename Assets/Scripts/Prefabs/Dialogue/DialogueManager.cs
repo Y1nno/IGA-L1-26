@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -20,6 +21,12 @@ public class DialogueManager : MonoBehaviour
     public SpeakerSO playerSO;
     public SpeakerSO bossSO;
     public SpeakerSO NarratorSO;
+
+    [Header("Decision UI")]
+    public GameObject decisionUI;
+    public TMP_Text decisionText;
+    public GameObject decisionButton;
+    public GameObject decisionButton2;
 
     private void Awake()
     {
@@ -109,12 +116,19 @@ public class DialogueManager : MonoBehaviour
                 return null;
         }
     }
+
+    public void DisplayDecision(DecisionPromptSO decisionPrompt)
+    {
+        
+    }
 }
 
 public enum DialogueInstances
 {
     TutorialFinish,
     Level1Finish,
+    Leaving,
+    Staying,
 }
 
 [System.Serializable]

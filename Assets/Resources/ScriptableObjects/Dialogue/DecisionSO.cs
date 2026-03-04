@@ -5,5 +5,5 @@ using UnityEngine.Events;
 public class DecisionSO : ScriptableObject
 {
     public string decisionText;
-    public UnityEvent OnDecisionMade;
+    public DialogueSO OnDecisionMade;
 }

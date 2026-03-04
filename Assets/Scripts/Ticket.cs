@@ -54,6 +54,7 @@ public class Ticket : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public void SetOrder(IngredientDef order)
     {
         this.order = order;
+        //ffs
         GetComponentInChildren<TMP_Text>().text = order.displayName;
     }
 }

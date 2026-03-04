@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e9fc2262e35fe24e9c3cac560837599, type: 3}
+  m_Name: NoDialogue
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
+  dialogueLines:
+  - speaker: 2
+    line: "As soon as you make the decision to stay, Chef D'Vour\u2019s voice is
+      heard in your head. "
+    image: {fileID: 0}
+    position: {x: 0, y: 0}
+    scale: {x: 0, y: 0}
+  - speaker: 0
+    line: 'Chef D''Vour: You know your place. Good little rat'
+    image: {fileID: 0}
+    position: {x: 0, y: 0}
+    scale: {x: 0, y: 0}
+  - speaker: 2
+    line: Congrats on completeing the tutorial!
+    image: {fileID: 0}
+    position: {x: 0, y: 0}
+    scale: {x: 0, y: 0}
+  OnDialogueEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1186727471398264838, guid: 7939e8a3b3ff22e48b7df958d8a3bc0e, type: 3}
+        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
+        m_MethodName: LoadSceneByName
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Level 1
+          m_BoolArgument: 0
+        m_CallState: 2

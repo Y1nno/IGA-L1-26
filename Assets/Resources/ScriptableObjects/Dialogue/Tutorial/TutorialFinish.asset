@@ -13,27 +13,29 @@ MonoBehaviour:
   m_Name: TutorialFinish
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
   dialogueLines:
-  - speaker: 0
-    line: "Well. Look what my little mousetrap caught. Come in, ch\xE9rie, get to
-      work. See if you can prove yourself in my kitchen."
-    image: {fileID: 1808409080906380215, guid: c58c7139830f4d742aa1680b58fe5cbf, type: 3}
+  - speaker: 2
+    line: Congrats, you've finished with all of the orders, and it seems Chef D'Vour
+      is busy with the patrons out front....
+    image: {fileID: 0}
     position: {x: -1.95, y: -1.38}
     scale: {x: 0.4078, y: 0.4078}
-  - speaker: 0
-    line: ...Make me sweat.
-    image: {fileID: 1808409080906380215, guid: c58c7139830f4d742aa1680b58fe5cbf, type: 3}
-    position: {x: 0, y: 0}
-    scale: {x: 1, y: 1}
   - speaker: 1
-    line: What do I do?
-    image: {fileID: 1808409080906380215, guid: c58c7139830f4d742aa1680b58fe5cbf, type: 3}
-    position: {x: 0, y: 0}
-    scale: {x: 1, y: 1}
-  - speaker: 0
-    line: Pick up the knife.
-    image: {fileID: 1808409080906380215, guid: c58c7139830f4d742aa1680b58fe5cbf, type: 3}
+    line: "Maybe I can just escape while he\u2019s not looking\u2026"
+    image: {fileID: 0}
     position: {x: 0, y: 0}
     scale: {x: 1, y: 1}
   OnDialogueEnd:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

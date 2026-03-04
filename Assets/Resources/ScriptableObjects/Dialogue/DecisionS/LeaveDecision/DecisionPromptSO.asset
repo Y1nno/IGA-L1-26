@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88e66d24f87f13045a14e7a12599288c, type: 3}
+  m_Name: DecisionPromptSO
+  m_EditorClassIdentifier: Assembly-CSharp::DecisionPromptSO
+  promptText: Do you make a break for it?
+  decisions:
+  - {fileID: 11400000, guid: 88d851cf391f56440bd3552862ac119a, type: 2}
+  - {fileID: 11400000, guid: 5248814793e7ab24ba2a7bf539b80a94, type: 2}

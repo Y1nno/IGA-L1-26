@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aafdfa15fa4c5604d93af80500886b75, type: 3}
   m_Name: Narration
   m_EditorClassIdentifier: Assembly-CSharp::SpeakerSO
-  speakerName: You
+  speakerName: 
   speakerPortrait: {fileID: 0}
   defaultSide: 1

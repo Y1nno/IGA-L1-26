@@ -44,4 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b07366710e097d348a990411743059de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GlobalGameManager
-  currentLevelName: 
+  currentLevelName: Tutorial Level
+  currentPauseMenuInstance: {fileID: 0}

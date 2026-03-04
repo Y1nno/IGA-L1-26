@@ -32,7 +32,8 @@ public class OrderManager : MonoBehaviour
     private float timeUntilNextPrompt = 0.0f;
     private List<ChefPrompts> usedChefPrompts = new List<ChefPrompts>();
 
-    
+    public IngredientDef BLT;
+    public ChefPrompts explanationBLT;
 
     private void Awake()
     {
@@ -150,6 +151,10 @@ public class OrderManager : MonoBehaviour
             platingStation.ClearIngredients();
             //Debug.Log("Evaluating order...");
             EvaluateOrder(order, platedIngredients);
+        }
+        if (pendingOrders <= 0 && orders.Count == 0)
+        {
+            OnFinish();
         }
     }
 
